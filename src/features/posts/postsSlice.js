@@ -1,14 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
-  { id: '1', title: 'First Post', content: 'Hello first!'},
-  { id: '2', title: 'Second Post', content: 'Hello second!'}
+  { id: '1', title: 'First Post', content: 'Hello first!' },
+  { id: '2', title: 'Second Post', content: 'Hello second!' }
 ]
 
-const postsSlide = createSlice({
+const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {}
+  reducers: {
+    postAdded(state, action) {
+      state.push(action.payload)
+    }
+  }
 })
 
-export default postsSlide.reducer
+export const { postAdded } = postsSlice.actions
+
+export default postsSlice.reducer
