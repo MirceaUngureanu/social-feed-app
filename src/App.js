@@ -8,23 +8,25 @@ import {
 
 import { Navbar } from './app/Navbar'
 import { PostsList } from "./features/posts/PostsList";
+import { AddPostForm } from "./features/posts/AddPostForm"
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Navbar/>
       <div className="App">
         <Switch>
           <Route
             exact
             path="/"
-            render={() => (
+            render={ () => (
               <React.Fragment>
-                <PostsList />
+                <AddPostForm/>
+                <PostsList/>
               </React.Fragment>
-            )}
+            ) }
           />
-          <Redirect to="/" />
+          <Redirect to="/"/>
         </Switch>
       </div>
     </Router>
