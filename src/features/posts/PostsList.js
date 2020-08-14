@@ -9,7 +9,7 @@ export const PostsList = () => {
     <article className='post-excerpt'>
       <h3>{ post.title }</h3>
       <p>{ post.content.substring(0, 100) }</p>
-      <Link to={ `/post/${ post.id }` } className="button muted-button">
+      <Link to={ `/posts/${ post.id }` } className="button muted-button">
         View Post
       </Link>
     </article>
