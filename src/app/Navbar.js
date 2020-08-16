@@ -6,7 +6,7 @@ export const Navbar = () => {
   return (
     <nav>
       <section>
-        <h1>Social media feed</h1>
+        <h1>Content feed</h1>
 
         <div className="navContent">
           <div className="navLinks">
