@@ -28,7 +28,7 @@ const postsSlice = createSlice({
     },
     postUpdated(state, action) {
       const { id, title, content } = action.payload
-      const existingPost = state.find(post => post.id = id)
+      const existingPost = state.find(post => post.id === id)
 
       if (existingPost) {
         existingPost.title = title
