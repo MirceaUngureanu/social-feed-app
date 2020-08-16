@@ -24,7 +24,7 @@ export const SinglePostPage = ({ match }) => {
 
   return (
     <section>
-      <article classname="post">
+      <article className="post">
         <h2>{ post.title }</h2>
         <PostAuthor userId={ post.user }/>
         <TimeAgo timestamp={ post.date }/>
