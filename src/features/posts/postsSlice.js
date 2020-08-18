@@ -1,13 +1,5 @@
-import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { client } from '../../api/client'
-
-const defaultReactions = {
-  thumbsUp: 0,
-  hooray: 0,
-  heart: 0,
-  rocket: 0,
-  eyes: 0
-}
 
 const initialState = {
   posts: [],
@@ -20,6 +12,12 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   return response.posts
 })
 
+export const addNewPost = createAsyncThunk('posts/addNewPost', async initialPost => {
+  const response = await client.post('/fakeApi/posts', { post: initialPost })
+
+  return response.post
+})
+
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
@@ -30,23 +28,6 @@ const postsSlice = createSlice({
 
       if (existingPost) {
         existingPost.reactions[reaction]++
-      }
-    },
-    postAdded: {
-      reducer(state, action) {
-        state.posts.push(action.payload)
-      },
-      prepare(title, content, userId) {
-        return {
-          payload: {
-            id: nanoid(),
-            date: new Date().toISOString(),
-            title,
-            content,
-            user: userId,
-            reactions: { ...defaultReactions }
-          }
-        }
       }
     },
     postUpdated(state, action) {
@@ -68,13 +49,21 @@ const postsSlice = createSlice({
       state.posts = state.posts.concat(action.payload)
     },
     [fetchPosts.rejected]: (state, action) => {
-      state.status = 'rejected'
+      state.status = 'failed'
+      state.error = action.error.message
+    },
+    [addNewPost.fulfilled]: (state, action) => {
+      state.status = 'succeeded'
+      state.posts.push(action.payload)
+    },
+    [addNewPost.rejected]: (state, action) => {
+      state.status = 'failed'
       state.error = action.error.message
     }
   }
 })
 
-export const { reactionAdded, postAdded, postUpdated } = postsSlice.actions
+export const { reactionAdded, postUpdated } = postsSlice.actions
 
 export const selectAllPosts = state => state.posts.posts
 
