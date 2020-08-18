@@ -65,6 +65,7 @@ const postsSlice = createSlice({
 
 export const { reactionAdded, postUpdated } = postsSlice.actions
 
+// we could avoid the repetition of "posts.posts" by changing the name of the nested array to "items or data"
 export const selectAllPosts = state => state.posts.posts
 
 export const selectPostById = (state, postId) =>
