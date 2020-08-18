@@ -7,12 +7,12 @@ import { PostAuthor } from './PostAuthor'
 import { TimeAgo } from './TimeAgo'
 import { ReactionButtons } from './ReactionButtons'
 
+import { selectAllPosts } from './postsSlice'
+
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params
 
-  const post = useSelector(state =>
-    state.posts.find(post => post.id === postId)
-  )
+  const post = useSelector(state => selectAllPosts(state, postId))
 
   if (!post) {
     return (
