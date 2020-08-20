@@ -6,10 +6,12 @@ import store from './app/store'
 import { Provider } from 'react-redux'
 
 import { fetchUsers } from './features/users/usersSlice'
+import {fetchNotifications} from './features/notifications/notificationsSlice'
 
 import './api/server'
 
 store.dispatch(fetchUsers())
+store.dispatch(fetchNotifications())
 
 ReactDOM.render(
   <React.StrictMode>
