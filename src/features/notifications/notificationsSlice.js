@@ -16,7 +16,7 @@ export const fetchNotifications = createAsyncThunk(
   }
 )
 
-const notificationSlice = createSlice({
+const notificationsSlice = createSlice({
   name: 'notifications',
   initialState: [],
   reducers: {
@@ -38,8 +38,8 @@ const notificationSlice = createSlice({
   }
 })
 
-export default notificationSlice.reducer
+export default notificationsSlice.reducer
 
-export const { allNotificationsRead } = notificationSlice.actions
+export const { allNotificationsRead } = notificationsSlice.actions
 
 export const selectAllNotifications = state => state.notifications
