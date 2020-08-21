@@ -4,7 +4,7 @@ import { TimeAgo } from './TimeAgo'
 import { ReactionButtons } from './ReactionButtons'
 import { Link } from 'react-router-dom'
 
-export const PostExcerpt = ({ post }) => {
+const Excerpt = ({ post }) => {
   return (
     <article className='post-excerpt'>
       <h3>{ post.title }</h3>
@@ -18,3 +18,5 @@ export const PostExcerpt = ({ post }) => {
     </article>
   )
 }
+
+export const PostExcerpt = React.memo(Excerpt)
