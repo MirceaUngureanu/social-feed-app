@@ -25,7 +25,7 @@ export const Navbar = () => {
     <nav>
       <section>
         <h1>Content feed</h1>
-        <p>*server response time delayed by 1s to observe loading states</p>
+        <p className="navWarning">*server response time delayed by 1s to observe loading states</p>
 
         <div className="navContent">
           <div className="navLinks">

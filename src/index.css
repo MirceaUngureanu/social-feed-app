@@ -55,6 +55,10 @@ nav a:hover {
   background: #926bcf;
 }
 
+.navWarning {
+  color: crimson;
+}
+
 .navContent {
   display: flex;
   justify-content: space-between;
